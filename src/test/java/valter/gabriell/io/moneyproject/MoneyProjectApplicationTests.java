@@ -1,0 +1,13 @@
+package valter.gabriell.io.moneyproject;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class MoneyProjectApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
