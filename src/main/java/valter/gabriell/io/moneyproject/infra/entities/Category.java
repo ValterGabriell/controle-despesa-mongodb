@@ -1,6 +1,6 @@
 package valter.gabriell.io.moneyproject.infra.entities;
 
-public enum Categoria {
-    NAMORICO,
-    ALIMENTACAO
+public enum Category {
+    LOVE,
+    FOOD
 }

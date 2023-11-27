@@ -1,8 +1,8 @@
 package valter.gabriell.io.moneyproject.infra.entities;
 
-public enum FormaPgto {
+public enum PaymentType {
     PIX,
-    DINEHIRO,
-    CREDITO,
-    DEBITO
+    CASH,
+    CREDIT,
+    DEBIT
 }

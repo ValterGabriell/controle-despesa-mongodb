@@ -1,4 +1,4 @@
-package valter.gabriell.io.moneyproject.infra.config;
+package valter.gabriell.io.moneyproject.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

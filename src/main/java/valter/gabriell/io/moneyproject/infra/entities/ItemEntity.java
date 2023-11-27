@@ -9,20 +9,21 @@ import java.time.LocalDate;
 public class ItemEntity {
     @Id
     private String id;
-    private String descricao;
-    private Categoria categoria;
-    private FormaPgto formaPgto;
-    private double valor;
+    private String description;
+    private Category category;
+    private PaymentType paymentType;
+    private double value;
     private LocalDate date;
 
     public ItemEntity() {
     }
 
-    public ItemEntity(String descricao, Categoria categoria, FormaPgto formaPgto, double valor, LocalDate date) {
-        this.descricao = descricao;
-        this.categoria = categoria;
-        this.formaPgto = formaPgto;
-        this.valor = valor;
+    public ItemEntity(String id, String description, Category category, PaymentType paymentType, double value, LocalDate date) {
+        this.id = id;
+        this.description = description;
+        this.category = category;
+        this.paymentType = paymentType;
+        this.value = value;
         this.date = date;
     }
 
@@ -34,36 +35,36 @@ public class ItemEntity {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Category getCategoria() {
+        return category;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategoria(Category category) {
+        this.category = category;
     }
 
-    public FormaPgto getFormaPgto() {
-        return formaPgto;
+    public PaymentType getFormaPgto() {
+        return paymentType;
     }
 
-    public void setFormaPgto(FormaPgto formaPgto) {
-        this.formaPgto = formaPgto;
+    public void setFormaPgto(PaymentType paymentType) {
+        this.paymentType = paymentType;
     }
 
-    public double getValor() {
-        return valor;
+    public double getValue() {
+        return value;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setValue(double value) {
+        this.value = value;
     }
 
     public LocalDate getDate() {
