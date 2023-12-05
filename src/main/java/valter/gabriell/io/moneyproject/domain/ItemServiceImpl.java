@@ -4,14 +4,18 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import valter.gabriell.io.moneyproject.infra.entities.Category;
 import valter.gabriell.io.moneyproject.infra.entities.ItemEntity;
+import valter.gabriell.io.moneyproject.ports.IQueueManager;
 import valter.gabriell.io.moneyproject.ports.ItemPersistencePort;
 import valter.gabriell.io.moneyproject.ports.ItemServicePort;
 
 public class ItemServiceImpl implements ItemServicePort {
     private final ItemPersistencePort itemPersistencePort;
 
-    public ItemServiceImpl(ItemPersistencePort itemPersistencePort) {
+    private final IQueueManager queueManager;
+
+    public ItemServiceImpl(ItemPersistencePort itemPersistencePort, IQueueManager queueManager) {
         this.itemPersistencePort = itemPersistencePort;
+        this.queueManager = queueManager;
     }
 
     @Override
@@ -21,7 +25,9 @@ public class ItemServiceImpl implements ItemServicePort {
 
     @Override
     public Mono<ItemEntity> save(ItemEntity itemEntity) {
-        return itemPersistencePort.save(itemEntity);
+        Mono<ItemEntity> save = itemPersistencePort.save(itemEntity);
+        queueManager.send(save.toString());
+        return save;
     }
 
     @Override

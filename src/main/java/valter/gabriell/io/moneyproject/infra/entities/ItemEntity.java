@@ -43,19 +43,19 @@ public class ItemEntity {
         this.description = description;
     }
 
-    public Category getCategoria() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategoria(Category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    public PaymentType getFormaPgto() {
+    public PaymentType getPaymentType() {
         return paymentType;
     }
 
-    public void setFormaPgto(PaymentType paymentType) {
+    public void setPaymentType(PaymentType paymentType) {
         this.paymentType = paymentType;
     }
 
