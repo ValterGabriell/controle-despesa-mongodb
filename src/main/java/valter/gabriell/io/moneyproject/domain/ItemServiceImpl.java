@@ -10,12 +10,8 @@ import valter.gabriell.io.moneyproject.ports.ItemServicePort;
 
 public class ItemServiceImpl implements ItemServicePort {
     private final ItemPersistencePort itemPersistencePort;
-
-    private final IQueueManager queueManager;
-
-    public ItemServiceImpl(ItemPersistencePort itemPersistencePort, IQueueManager queueManager) {
+    public ItemServiceImpl(ItemPersistencePort itemPersistencePort) {
         this.itemPersistencePort = itemPersistencePort;
-        this.queueManager = queueManager;
     }
 
     @Override
@@ -25,9 +21,7 @@ public class ItemServiceImpl implements ItemServicePort {
 
     @Override
     public Mono<ItemEntity> save(ItemEntity itemEntity) {
-        Mono<ItemEntity> save = itemPersistencePort.save(itemEntity);
-        queueManager.send(save.toString());
-        return save;
+        return itemPersistencePort.save(itemEntity);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package valter.gabriell.io.moneyproject.config;
+package valter.gabriell.io.moneyproject.infra.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ public class ProjectConfig {
 
     @Bean
     public ItemServicePort getService(){
-        return new ItemServiceImpl(getPersistencePort(), queueManager());
+        return new ItemServiceImpl(getPersistencePort());
     }
     @Bean
     public ItemPersistencePort getPersistencePort(){
