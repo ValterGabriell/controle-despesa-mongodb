@@ -9,27 +9,25 @@ import valter.gabriell.io.moneyproject.ports.IQueueManager;
 
 @Component
 @EnableScheduling
-public class SendEmailAtEndOfMonth {
+public class SendEmailAtEndOfMonth implements IEmail {
     private final ItemRepository itemRepository;
     private final IQueueManager queueManager;
     private static final String TIME_ZONE = "America/Sao_Paulo";
+
 
     public SendEmailAtEndOfMonth(ItemRepository itemRepository, IQueueManager queueManager) {
         this.itemRepository = itemRepository;
         this.queueManager = queueManager;
     }
 
-    @Scheduled(cron = "0 0 0 1 * ?", zone = TIME_ZONE)
-    public void sendEmail() {
-        //relatorio de gastos
-        queueManager.send(obterDadosParaEmail().toString());
-    }
-    @Scheduled(cron = "0/30 * * * * *", zone = TIME_ZONE)
-    public void test() {
-        queueManager.send("this is just a test");
-    }
-
     private MessageInput obterDadosParaEmail() {
         return new MessageInput("it", "will", "be", "implemented");
+    }
+
+    @Override
+    @Scheduled(cron = "0 0 0 1 * ?", zone = TIME_ZONE)
+    public void send() {
+        //relatorio de gastos
+        queueManager.send(obterDadosParaEmail().toString());
     }
 }

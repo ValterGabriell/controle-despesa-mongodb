@@ -10,13 +10,9 @@ import valter.gabriell.io.moneyproject.ports.ItemServicePort;
 
 public class ItemServiceImpl implements ItemServicePort {
     private final ItemPersistencePort itemPersistencePort;
+
     public ItemServiceImpl(ItemPersistencePort itemPersistencePort) {
         this.itemPersistencePort = itemPersistencePort;
-    }
-
-    @Override
-    public Mono<Void> deleteAll() {
-        return itemPersistencePort.deleteAll();
     }
 
     @Override
@@ -37,5 +33,10 @@ public class ItemServiceImpl implements ItemServicePort {
     @Override
     public Flux<ItemEntity> findAllByCategory(Category category) {
         return itemPersistencePort.findAllByCategory(category);
+    }
+
+    @Override
+    public Mono<Void> deleteAll() {
+        return itemPersistencePort.deleteAll();
     }
 }
