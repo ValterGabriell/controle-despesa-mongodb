@@ -1,11 +1,11 @@
 package valter.gabriell.io.moneyproject.infra.entities;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 
-@Document
+@Entity
 public class ItemEntity {
     @Id
     private String id;

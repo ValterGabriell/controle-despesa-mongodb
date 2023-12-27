@@ -2,40 +2,40 @@ package valter.gabriell.io.moneyproject.infra.adapter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import valter.gabriell.io.moneyproject.infra.entities.Category;
 import valter.gabriell.io.moneyproject.infra.entities.ItemEntity;
 import valter.gabriell.io.moneyproject.infra.repository.ItemRepository;
-import valter.gabriell.io.moneyproject.ports.ItemPersistencePort;
+import valter.gabriell.io.moneyproject.ports.IItemPersistencePort;
+
+import java.util.List;
 
 @Service
-public class ItemAdapterJpa implements ItemPersistencePort {
+public class IItemAdapterJpa implements IItemPersistencePort {
     @Autowired
     private ItemRepository itemRepository;
 
     @Override
-    public Mono<Void> deleteAll() {
-       return itemRepository.deleteAll();
+    public void deleteAll() {
+        itemRepository.deleteAll();
     }
 
     @Override
-    public Mono<ItemEntity> save(ItemEntity itemEntity) {
+    public ItemEntity save(ItemEntity itemEntity) {
         return itemRepository.save(itemEntity);
     }
 
     @Override
-    public Flux<ItemEntity> findAll() {
+    public List<ItemEntity> findAll() {
         return itemRepository.findAll();
     }
 
     @Override
-    public Mono<ItemEntity> findById(String id) {
-        return itemRepository.findById(id);
+    public ItemEntity findById(String id) {
+        return itemRepository.findById(id).get();
     }
 
     @Override
-    public Flux<ItemEntity> findAllByCategory(Category category) {
+    public List<ItemEntity> findAllByCategory(Category category) {
         return itemRepository.findAllByCategory(category);
     }
 }
